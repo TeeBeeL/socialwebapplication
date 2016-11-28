@@ -1,0 +1,38 @@
+{
+  "name": "socialwebapp",
+  "description":"A social web app built with JavaScript using MongoDb, express and node.js",
+  "version": "1.0.0",
+  "author":"team4",
+  "private": true,
+  "engines":{
+  	"node": "4.6.1",
+  	"npm": "3.10.9"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "connect-flash": "*",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.5.2",
+    "express": "~4.14.0",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "morgan": "~1.7.0",
+    "multer": "*",
+    "nodemon": "^1.11.0",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "serve-favicon": "~2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TeeBeeL/socialwebapplication"
+  }
+}

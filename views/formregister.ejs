@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,400italic,500,700' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
+  
+      <link rel="stylesheet" href='/stylesheets/style.css'>
+
+  
+</head>
+
+<body>
+  <body>
+  <div class="overlay"></div>
+  <div class="modal position">
+    <img src= "/images/logo.png" class="logo">
+    <div class="brand login-text">
+      Register with your username, email & password<br><br>
+      <strong>-------------------------------------------</strong><br><br>
+      Connect with great people around the world. There is so much to share and learn.
+    </div>
+   <!-- <button class="brand login flat-button facebook " style="border-radius: 4px;">Continue with Facebook</button> -->
+    <div class="form position">
+      <a href="#"><button class="close" style="border-radius: 4px;">x</button></a>
+      <div class="form-inner">
+      <%if(errors.length){%>
+        <ul style="margin-top:-5px; margin-bottom: 0px; ">
+        <%for(var i = 0; i < errors.length; i++){%>
+         <li class="alert alert-danger"><%= errors[i].msg %></li>
+         <% }%>
+         </ul>
+      <% }%>
+        <!-- Tabs-->
+        <div class="tabs">
+          <ul class="tabs">
+            <li data-tab="member">
+              <a href="/users/login">I am a member</a>
+            </li>
+            <li class="current" data-tab="new">
+              <a href="/users/register">I am new here</a>
+            </li>
+          </ul>
+          <!--Registration form-->
+          <div class="form-content current" id="new">
+            <form id="reg" method="post" action="/users/register" enctype="multipart/form-data">
+              <input type="text" name="username" id="user" placeholder="USERNAME" class="field" required>
+              <input type="email" name="email" id="usremail" placeholder="EMAIL ADDRESS" class="field" required>
+              <input type="password" name="password" placeholder="PASSWORD" class="field" required>
+              <input type="password" name="password2" placeholder="CONFIRM PASSWORD" class="field" required>
+              <input class="btn btn-default flat-button signin" name="submit" type="submit" id="submit" style="border-radius: 4px;" value="Register">
+              <div class="clear"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

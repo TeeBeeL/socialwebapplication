@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Edit Post</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/comment.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <div class="container-fluid">
+      <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+              <img style ="width:100px; height:50px;" src="/images/we.png">
+            </div>
+            <div class="collapse navbar-collapse btn-group" id="myNavbar">
+              <ul class="nav navbar-nav">
+                  <li class="active"><a href="/">Home</a></li>
+                  <li><a href="/users/userpage">Forum</a></li>
+                  <li><a href="http://www.vanguardngr.com/category/national-news/" class="glyphicon glyphicon-globe" title="News"><i class="fa fa-globe"></i></a></li>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Notification <span class="caret"></span>
+                </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">John Doe posted on your wall</a></li>
+                    <li><a href="#">Jane likes your post</a></li>
+                  </ul>
+              </ul>
+            </div>
+      </nav>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span>  Log-out</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- side -->
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-3 well">
+      <div class="well">
+        <p><a href="/users/profilepage/<%=username%>">My Profile</a></p>
+        <img src="/images/dave.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+         <hr>
+         <p><i class="glyphicon glyphicon-user"></i> Designer, UI</p>
+         <p><i class="glyphicon glyphicon-map-marker"></i> London, UK</p>
+         <p><i class="glyphicon glyphicon-calendar"></i> April 1, 1988</p>
+      </div>
+      <div class="well">
+        <h4 class="label label-info">What might Interest you?</h4>
+        <p>
+          <button class="label"><a href="http://www.vanguardngr.com/category/national-news/">News</a></button>
+          <button class="label label-warning"><a href="https://www.youtube.com/channel/UClgRkhTL3_hImCAmdLfDE4g">Movies</a></button>
+          <button class="label label-info"><a href="http://www.goal.com/">Football</a></button>
+          <button class="label label-success"><a href="www.ign.com">Gaming</a></button>
+          <button class="label label-danger"><a href="http://www.mtv.com/music/">Music</a></button>
+        </p>
+      </div>
+    </div>
+    <!-- middle -->
+    <div class="col-sm-6">
+     <div class="col-sm-12" id="middle">
+             <div class="thumbnail" id="get"> 
+              <p><%=post.body%></p>
+            <form method="post" action="/users/editpost/<%=post._id%>" enctype="multipart/form-data">
+            <input type="hidden" name="postid" class="form-control" value='<%=post._id%>'>
+            <textarea name="body" class="form-control col-xs-12" id="words" rows="2" cols="50" placeholder="Edit your post"></textarea><br>
+            <input class="btn btn-default" type="submit" value="Edit Post" />
+            </form>
+          </div>
+        </div>
+    </div>
+    <!-- right -->
+
+    <div class="col-sm-3 well">
+      <marquee direction="up">
+      <div class="thumbnail">
+        <p>Upcoming Events:</p>
+        <img src="/images/building.jpg" alt="Paris" width="400" height="300">
+        <p><strong>Paris</strong></p>
+        <p>Fri.18 November, 2016</p>
+        <button class="btn btn-primary">Info</button>
+      </div>
+    </marquee>
+      <div class="well">
+        <strong style="color: #d43339"><em><p><a href="http://audax.com.ng/">Audax Solution Center</a></p></em></strong>
+        <img src="/images/build.jpg" height="55" width="55" alt="Avatar">
+        <p>We make next generation of tech. guys.
+            Address: plot 2, Lekki Phase 1, Ikate, Logos State. 08065656567</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+   <span>@ We connect.  All Right Reserved &copy; 2016 <a href="#" target="_blank" style="color: #1E90FF;"> Group4.com</a></span>
+</footer>
+
+</body>
+</html>
+

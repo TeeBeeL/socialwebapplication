@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Profile Page</title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/profilepage.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+		<nav class="navbar navbar-inverse" role="navigation">
+           <div class="navbar-header">
+             <img style ="width:100px; height:50px;" src="/images/we.png">
+             <button type="button" class="navbar-toggle" data-toggle="collapse"
+       data-target="#example-navbar-collapse">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+           </div>
+           <div class="collapse navbar-collapse" id="example-navbar-collapse">
+             <ul class="nav navbar-nav">
+                 <li><a href="/">Home</a></li>
+                 <li><a href="/users/userpage/<%=username%>">Forum</a></li>
+                 <li><a href="http://www.vanguardngr.com/category/national-news/" class="glyphicon glyphicon-globe" title="News"><i class="fa fa-globe"></i></a></li>
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Notification <span class="caret"></span>
+               </button>
+                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                   <li><a href="#">John Doe posted on your wall</a></li>
+                   <li><a href="#">Jane likes your post</a></li>
+                 </ul>
+             </ul>
+           </div>
+     </nav>
+
+      <%if(errors.length >= 1){%>
+        <ul>
+        <%for(var i = 0; i < errors.length; i++){%>
+         <li class="alert alert-danger"><%= errors[i].msg %></li>
+         <% }%>
+         </ul>
+      <% }%>
+
+	<div class="container-fluid">
+
+		<div class="prfbg">
+			<br />
+			<h1 style="color:#fff">About Me</h1>
+
+			<div class="image-responsive">
+				<img class=" prfimg" src="/images/uploads/<%=user.profileimage%>">
+			</div>
+			
+			<h3 style="color:#fff"><%=user.fullname%></h3>
+			<br />
+		</div>
+    
+			<!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      	<!-- Modal content-->
+		    <div class="modal-content">
+		        
+		        <div class="modal-header">
+		          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+		          <h4 class="modal-title"></h4>
+		        </div>
+		        
+		        <div class="modal-body display-block;">
+				    <form action="/users/profilepage/<%=username%>" method="post" enctype="multipart/form-data">
+			        	<p>Names: <input name="fullname" class="form-control col-xs-12" type="text" placeholder="Names"></p>
+			         	<p>About Me: <textarea name="about" class="form-control col-xs-12" placeholder="Edit About" rows="10"></textarea> </p>
+			         	<p>Skills: <input name="skills" class="form-control col-xs-12" type="text" placeholder="Skills"></p>
+			         	<p>Hobbies: <input name="hobbies" class="form-control col-xs-12" type="text" placeholder="Hobbies"></p>
+			         	<div class="modal-footer">
+			              <input class="btn btn-success" type="submit" name="submit" value="Save">
+			            </div>
+		         	</form>
+		        </div>
+		        
+		        
+		    </div>
+	      
+	    </div>
+  	</div>
+
+  	<!--Image Modal -->
+  	<div class="modal fade" id="myimage" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+          <h4 class="modal-title"></h4>
+        </div>
+        <form method="post" action="/users/profileimage/<%=username%>" class="modal-body" enctype="multipart/form-data">
+         <label>Select image to upload: <input name="profileimage" type='file'> </label> 
+         <div class="modal-footer">
+          <input name="submit" type="submit" class="btn btn-success" value = "Upload Image">
+        </div>
+       </form>
+      </div>
+      
+    </div>
+  </div>
+  
+  <%if(user.username === username){ %>
+	  <form>
+		<button style="display:inline-block; color:#fff;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit Profile</button>
+	    <button style="display:inline-block; color:#fff;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myimage">Change Profile Image</button>
+
+	  </form>
+  <%}%>		
+
+
+	<div class="row text-center">
+			
+		<div class="col-md-4">
+			<div class="bgd thumbnail-primary">
+		
+				<h3><b>ABOUT</b></h3>
+				<P><%=user.about%></P>
+		
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="bgd thumbnail-primary">
+				
+				<h3><b>SKILLS</b></h3>
+				<p><%=user.skills%></P>
+					
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="bgd thumbnail-primary">
+				
+				<h3><b>HOBBIES</b></h3>
+				<p><%=user.hobbies%></p>
+			</div>
+		</div>
+			
+	</div>
+		<br/>
+	
+	<footer>
+	  <span>@ We connect.  All Right Reserved &copy; 2016 <a href="#" target="_blank""> Group4.com</a></span>
+	</footer>
+	
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/pop.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+	<title>pop</title>
+</head>
+<body>
+	<span><a class="like-button" href="#">Like</a></span>
+<script type="text/javascript">
+    $(function() {
+    $('.like-button').click(function(){
+        var obj = $(this);
+        if( obj.data('liked') ){
+            obj.data('liked', false);
+            obj.html('Like');
+        }
+        else{
+            obj.data('liked', true);
+            obj.html('Unlike');
+        }
+    });
+});
+</script>
+</body>
+</html>
